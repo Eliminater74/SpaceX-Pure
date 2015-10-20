@@ -10,14 +10,14 @@ echo
 
 # set variables
 
-Flash="SpaceX-Pure-Edition_v1.0.0_G920S"
+Flash="SpaceX-Pure-Edition_v1.0.0_N920T"
 BK=build_kernel
 OUT=Output
 
 # updater-script setup
-sed -i -e '/ui_print("~~~~~~~~~ SpaceX Kernel for/c\ui_print("~~~ SpaceX Kernel Peru Edition for Galaxy S6 ~~~");' Output/META-INF/com/google/android/updater-script
+sed -i -e '/ui_print("~~~~~~~~~ SpaceX Kernel for/c\ui_print("~~~ SpaceX Kernel Peru Edition for Galaxy Note 5 ~~~");' Output/META-INF/com/google/android/updater-script
 
-sed -i -e '/by ManhIT ~~~~~~~~~~~~~~~");/c\ui_print("~~~~~~~~~~~~~~~~ G920S - by ManhIT ~~~~~~~~~~~~~~~~~");' Output/META-INF/com/google/android/updater-script
+sed -i -e '/by ManhIT ~~~~~~~~~~~~~~~");/c\ui_print("~~~~~~~~~~~~~~~~ N920T - by ManhIT ~~~~~~~~~~~~~~~~~");' Output/META-INF/com/google/android/updater-script
 
 sed -i -e '/package_extract_file("boot.img/c\package_extract_file("boot.img", "/dev/block/platform/15570000.ufs/by-name/BOOT");' Output/META-INF/com/google/android/updater-script
 
