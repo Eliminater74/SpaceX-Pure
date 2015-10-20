@@ -10,14 +10,14 @@ echo
 
 # set variables
 
-Flash="SpaceX-Pure-Edition_v1.0.0_N920T"
+Flash="SpaceX-Pure-Edition_v1.0.0_G920S"
 BK=build_kernel
 OUT=Output
 
 # updater-script setup
 sed -i -e '/ui_print("~~~~~~~~~ SpaceX Kernel for/c\ui_print("~~~~~~~~~ SpaceX Kernel Peru Edition for Galaxy Note 5 ~~~~~~~~~");' Output/META-INF/com/google/android/updater-script
 
-sed -i -e '/by ManhIT ~~~~~~~~~~~~~~~");/c\ui_print("~~~~~~~~~~~~~~~ N920T - by ManhIT ~~~~~~~~~~~~~~~");' Output/META-INF/com/google/android/updater-script
+sed -i -e '/by ManhIT ~~~~~~~~~~~~~~~");/c\ui_print("~~~~~~~~~~~~~~~ G920S - by ManhIT ~~~~~~~~~~~~~~~");' Output/META-INF/com/google/android/updater-script
 
 sed -i -e '/package_extract_file("boot.img/c\package_extract_file("boot.img", "/dev/block/platform/15570000.ufs/by-name/BOOT");' Output/META-INF/com/google/android/updater-script
 
@@ -34,18 +34,18 @@ echo "$sizT Kb"
 
 
 ###################################### RAMDISK GENERATION #####################################
-cd $BK
+
 echo "Patched sepolicy..."
 adb push /home/spacex/Android_Workspace/Kernel/SpaceX-Pure/build_kernel/ramdisk/sepolicy /data/local/tmp/sepolicy
 adb shell su -c "supolicy --file /data/local/tmp/sepolicy /data/local/tmp/sepolicy_out"
 adb shell su -c "chmod 0644 /data/local/tmp/sepolicy_out"
-adb pull /data/local/tmp/sepolicy_out /home/spacex/Android_Workspace/Kernel/SpaceX-Pure/build_kernel/
-mv -f sepolicy_out /ramdisk/sepolicy
-chmod 0644 /ramdisk/sepolicy
+adb pull /data/local/tmp/sepolicy_out $BK/
+mv -f $BK/sepolicy_out /ramdisk/sepolicy
+chmod 0644 $BK/ramdisk/sepolicy
 
 echo -n "Make Ramdisk archive..............................."
-cp ramdisk_fix_permissions.sh /ramdisk/
-cd ramdisk
+cp $BK/ramdisk_fix_permissions.sh $BK/ramdisk/ramdisk_fix_permissions.sh
+cd $BK/ramdisk
 chmod 0777 ramdisk_fix_permissions.sh
 ./ramdisk_fix_permissions.sh
 rm -f ramdisk_fix_permissions.sh
