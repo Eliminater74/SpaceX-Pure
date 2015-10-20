@@ -1,7 +1,7 @@
 # Rooting_Android_5.1.1-6.0_SELinux-Enforcing
 Rooting Android 5.1.1/6.0 on stock Kernel, SELinux enforcing. Modified ramdisk only! 
 
-You need modifications sepolicy yourself as follows:
+You need modifications sepolicy yourself as follows: (All credit SuperSU 2.50+ @Chainfire)
 - Root a reference device (4.4+ with SELinux enabled) with v2.50+
 - Extract the sepolicy file from the target boot image's ramdisk
 - With the reference device connected to ADB:
