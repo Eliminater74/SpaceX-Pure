@@ -35,6 +35,14 @@ echo "$sizT Kb"
 
 ###################################### RAMDISK GENERATION #####################################
 
+echo "Patched sepolicy..."
+adb push /home/spacex/Android_Workspace/Kernel/SpaceX-Pure/build_kernel/ramdisk/sepolicy /data/local/tmp/sepolicy
+adb shell su -c "supolicy --file /data/local/tmp/sepolicy /data/local/tmp/sepolicy_out"
+adb shell su -c "chmod 0644 /data/local/tmp/sepolicy_out"
+adb pull /data/local/tmp/sepolicy_out /home/spacex/Android_Workspace/Kernel/SpaceX-Pure/build_kernel/
+mv -f sepolicy_out /ramdisk/sepolicy
+chmod 0644 /ramdisk/sepolicy
+
 echo -n "Make Ramdisk archive..............................."
 cp $BK/ramdisk_fix_permissions.sh $BK/ramdisk/ramdisk_fix_permissions.sh
 cd $BK/ramdisk
