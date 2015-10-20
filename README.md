@@ -7,8 +7,11 @@ You need modifications sepolicy yourself as follows: (All credit SuperSU 2.50+ @
 - With the reference device connected to ADB:
 
 adb push sepolicy /data/local/tmp/sepolicy
+
 adb shell su -c "supolicy --file /data/local/tmp/sepolicy /data/local/tmp/sepolicy_out"
+
 adb shell su -c "chmod 0644 /data/local/tmp/sepolicy_out"
+
 adb pull /data/local/tmp/sepolicy_out sepolicy_out
 
 - Replace the sepolicy file in the boot image's ramdisk with the sepolicy_out file
